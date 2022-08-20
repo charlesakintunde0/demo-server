@@ -8,10 +8,10 @@ redisClient.on('connect', function () {
     console.log("Connected to redis")
 });
  
-// redisClient.on('error', function () {
-//     console.log("Redis crashed ON error.")
+redisClient.on('error', function (err) {
+    console.log(`Redis crashed ON error.: ${err}`)
  
-// })
+})
 
 
 module.exports.rateLimiterMiddleware = (req, res, next) => { 
