@@ -8,10 +8,10 @@ redisClient.on('connect', function () {
     console.log("Connected to redis")
 });
  
-redisClient.on('error', function () {
-    console.log("Redis crashed ON error.")
+// redisClient.on('error', function () {
+//     console.log("Redis crashed ON error.")
  
-})
+// })
 
 
 module.exports.rateLimiterMiddleware = (req, res, next) => { 
@@ -46,7 +46,7 @@ module.exports.rateLimiterMiddleware = (req, res, next) => {
          
          if (difference < 1) {
            //block the request
-           if (data.count >= 20) {
+           if (data.count >= 1) {
              let countdown = (60 - ((moment().unix() - data.startTime)))
  
              let timeLeft =  countdown 
