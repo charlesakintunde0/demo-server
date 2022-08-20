@@ -1,9 +1,4 @@
-const ms = require('ms');
-const { RateLimiterRedis } = require('rate-limiter-flexible');
-const redis = require('redis');
-const requestIp = require('request-ip');
-
-  module.exports.apiSource =  (req, res) => {
+module.exports.apiSource =  (req, res) => {
     res.send('Welcome to EQ Works 😎')
   }
 
@@ -14,8 +9,6 @@ const requestIp = require('request-ip');
       ORDER BY date, hour
       LIMIT 168;
     `
-
-    console.log(req.ip)
     return next()
   }
 
