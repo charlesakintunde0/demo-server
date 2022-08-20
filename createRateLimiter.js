@@ -36,7 +36,7 @@ module.exports.rateLimiterMiddleware = (req, res, next) => {
          let currentTime = moment().unix()
          let difference = (currentTime - data.startTime) / 60
          
-         if (difference >= 1) {
+         if (difference >= 20) {
   
            let body = {
              'count': 1,
