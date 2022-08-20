@@ -2,11 +2,9 @@ const redis = require('redis');
 const dotenv = require('dotenv');
 dotenv.config();
 const moment = require('moment')
-
 const  {
   REDIS_URL_1
 } = process.env
-
 
 const redisClient = redis.createClient({url: REDIS_URL_1,no_ready_check: true}); // Create a new
 
@@ -38,7 +36,7 @@ module.exports.rateLimiterMiddleware = (req, res, next) => {
          let currentTime = moment().unix()
          let difference = (currentTime - data.startTime) / 60
          
-         if (difference >= 20) {
+         if (difference >= 1) {
   
            let body = {
              'count': 1,
@@ -52,7 +50,7 @@ module.exports.rateLimiterMiddleware = (req, res, next) => {
          
          if (difference < 1) {
            //block the request
-           if (data.count >= 1) {
+           if (data.count >= 20) {
              let countdown = (60 - ((moment().unix() - data.startTime)))
  
              let timeLeft =  countdown 
