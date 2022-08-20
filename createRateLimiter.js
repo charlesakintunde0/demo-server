@@ -2,9 +2,11 @@ const redis = require('redis');
 const dotenv = require('dotenv');
 dotenv.config();
 const moment = require('moment')
+
 const  {
   REDIS_URL_1
 } = process.env
+
 
 const redisClient = redis.createClient({url: REDIS_URL_1,no_ready_check: true}); // Create a new
 
